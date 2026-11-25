@@ -27,16 +27,7 @@ jobs:
           gradle-version: '8.9'
 
       - name: Extract project
-        shell: bash
-        run: |
-          git ls-files
-          mapfile -t files < <(find . -type f -iname "*.zip" -not -path "./.git/*")
-          if [ "${#files[@]}" -ne 1 ]; then
-            echo "Expected exactly one ZIP file"
-            printf '%s\n' "${files[@]}"
-            exit 1
-          fi
-          unzip -o "${files[0]}"
+        run: unzip -o ".github/workflows/PULSE4K_Mobile_Android_Project.zip"
 
       - name: Build APK
         working-directory: PULSE4K_Mobile
